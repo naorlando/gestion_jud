@@ -10,6 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 @Entity
 @Table(name = "expedientes")
 public class Expediente {
@@ -26,6 +27,7 @@ public class Expediente {
     private EstadoExpediente estado;
 
     private BigDecimal provisionContable;
+
 
     @OneToMany(mappedBy = "expediente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Documento> documentos;

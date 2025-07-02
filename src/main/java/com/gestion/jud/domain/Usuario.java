@@ -10,6 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -31,4 +32,5 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;
+
 }

@@ -32,4 +32,8 @@ public class Documento {
     private List<Documento> versiones;
 
     private String rutaArchivo;
+
+    private String rutaArchivo;
+
+
 }
