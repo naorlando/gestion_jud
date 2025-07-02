@@ -2,7 +2,12 @@ package com.gestion.jud.domain;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "documentos")
 public class Documento {
@@ -23,24 +28,12 @@ public class Documento {
     @JoinColumn(name = "parent_documento_id")
     private Documento parentDocumento;
 
+    @OneToMany(mappedBy = "parentDocumento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Documento> versiones;
+
     private String rutaArchivo;
 
-    // getters and setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    private String rutaArchivo;
 
-    public Expediente getExpediente() { return expediente; }
-    public void setExpediente(Expediente expediente) { this.expediente = expediente; }
 
-    public String getTipoDocumento() { return tipoDocumento; }
-    public void setTipoDocumento(String tipoDocumento) { this.tipoDocumento = tipoDocumento; }
-
-    public LocalDate getFechaEmision() { return fechaEmision; }
-    public void setFechaEmision(LocalDate fechaEmision) { this.fechaEmision = fechaEmision; }
-
-    public Documento getParentDocumento() { return parentDocumento; }
-    public void setParentDocumento(Documento parentDocumento) { this.parentDocumento = parentDocumento; }
-
-    public String getRutaArchivo() { return rutaArchivo; }
-    public void setRutaArchivo(String rutaArchivo) { this.rutaArchivo = rutaArchivo; }
 }
