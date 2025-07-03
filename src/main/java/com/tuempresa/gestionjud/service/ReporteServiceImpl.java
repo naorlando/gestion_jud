@@ -6,12 +6,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+
 
 @Service
 public class ReporteServiceImpl implements ReporteService {
@@ -29,16 +29,14 @@ public class ReporteServiceImpl implements ReporteService {
             Row header = sheet.createRow(0);
             header.createCell(0).setCellValue("Expediente");
             header.createCell(1).setCellValue("Provision");
-
-            List<Object[]> data = expedienteRepository.findAll()
-                    .stream()
-                    .map(e -> new Object[]{e.getId(), e.getProvisionContable()})
-                    .toList();
+          
             int i = 1;
-            for (Object[] d : data) {
+            for (var e : expedienteRepository.findAll()) {
                 Row row = sheet.createRow(i++);
-                row.createCell(0).setCellValue(((Long) d[0]));
-                row.createCell(1).setCellValue(((BigDecimal) d[1]).doubleValue());
+                row.createCell(0).setCellValue(e.getId());
+                if (e.getProvisionContable() != null) {
+                    row.createCell(1).setCellValue(e.getProvisionContable().doubleValue());
+                }
             }
             wb.write(baos);
             return new ByteArrayInputStream(baos.toByteArray());
