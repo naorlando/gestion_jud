@@ -6,10 +6,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
+
 
 @Service
 public class ReporteServiceImpl implements ReporteService {
@@ -27,7 +29,7 @@ public class ReporteServiceImpl implements ReporteService {
             Row header = sheet.createRow(0);
             header.createCell(0).setCellValue("Expediente");
             header.createCell(1).setCellValue("Provision");
-
+          
             int i = 1;
             for (var e : expedienteRepository.findAll()) {
                 Row row = sheet.createRow(i++);
