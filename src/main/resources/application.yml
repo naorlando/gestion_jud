@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gestionjud
+    username: gestion
+    password: gestion
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: public
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  mail:
+    host: smtp.example.com
+    port: 587
+    username: user@example.com
+    password: secret
+
+flyway:
+  locations: classpath:db/migration
+
+jwt:
+  secret: mysecretkey
+  expiration: 3600000
+
+logging:
+  level:
+    root: INFO
