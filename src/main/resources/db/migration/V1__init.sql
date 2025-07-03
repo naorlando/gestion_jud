@@ -13,6 +13,7 @@ CREATE TABLE expedientes (
     estado VARCHAR(20),
     provision_contable NUMERIC(15,2)
 );
+
 CREATE INDEX idx_expedientes_estado ON expedientes(estado);
 
 CREATE TABLE documentos (
@@ -39,3 +40,4 @@ CREATE TABLE comentarios (
 );
 CREATE INDEX idx_comentarios_expediente ON comentarios(expediente_id);
 CREATE INDEX idx_comentarios_usuario ON comentarios(usuario_id);
+
