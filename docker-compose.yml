@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: gestionjud
+      POSTGRES_USER: gestion
+      POSTGRES_PASSWORD: gestion
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/gestionjud
+      SPRING_DATASOURCE_USERNAME: gestion
+      SPRING_DATASOURCE_PASSWORD: gestion
+      JWT_SECRET: mysecretkey
+    volumes:
+      - ./uploads:/uploads
