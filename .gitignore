@@ -1,0 +1,19 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Build
+/target/
+*.log
+
+# Credentials
+*.pem
+*.key
+*.crt
+
+# OS
+.DS_Store
+
+# Others
+uploads/
